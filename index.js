@@ -7,12 +7,12 @@ const port =3000;
 var fs=require('fs');
 var data=fs.readFileSync('Lab3-timetable-data.json', 'utf8');
 //convert file to object in js
-var timetableData=JSON.parse(data);
+var timeTableData=JSON.parse(data);
 
 
-app.get('/',(req,res) =>{
+app.get('/courses',(req,res) =>{
     console.log(`GET request for ${req.url}`)
-    res.send("Hello World");
+    res.send(timeTableData);
 
 });
 app.listen(port, () =>{
