@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port =3000;
 
+
 //read file
 var fs=require('fs');
 var data=fs.readFileSync('Lab3-timetable-data.json', 'utf8');
@@ -10,11 +11,11 @@ var timetableData=JSON.parse(data);
 
 
 app.get('/',(req,res) =>{
-
+    console.log(`GET request for ${req.url}`)
     res.send("Hello World");
 
 });
 app.listen(port, () =>{
-    console.log('Listening on port ${port}');
+    console.log(`Listening on port ${port}`);
 
 });
