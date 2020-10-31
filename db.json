@@ -1,0 +1,40 @@
+{
+  "schedule": [
+    {
+      "scheduleTitle": "title1",
+      "pairing": [
+        {
+          "courseCode": "AMERICAN",
+          "subjectCode": "2341A"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "title2",
+      "pairing": [
+        {
+          "courseCode": "AMERICAN",
+          "subjectCode": "2341A"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "title3",
+      "pairing": [
+        {
+          "courseCode": "AMERICAN",
+          "subjectCode": "2341A"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "title4",
+      "pairing": [
+        {
+          "courseCode": "AMERICAN",
+          "subjectCode": "2341A"
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,12 @@ const express = require('express');
 const app = express();
 const port =3000;
 const router = express.Router();
+//database imports
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter = new FileSync('db.json')
+const db = low(adapter)
+
 
 
 //read file
@@ -10,6 +16,8 @@ var fs=require('fs');
 var data=fs.readFileSync('Lab3-timetable-data.json', 'utf8');
 //convert file to object in js
 var timeTableData=JSON.parse(data);
+//set up express JSON
+router.use(express.json());
 //setep serving front end code
 app.use('/', express.static('static'));
 //middleware to do logging
@@ -28,7 +36,7 @@ router.get('/:subject_id', (req,res) =>{
     const id = req.params.subject_id;
     const subjectCode = timeTableData.filter(s => s.subject === (id)); //search for the term and return an array with each
     if(subjectCode){
-        res.send(subjectCode);
+        res.send(subjectCode); //return the value subjectcode
     }else{
         res.status(404).send(`subject ${id} was not found`);
     }
@@ -38,7 +46,7 @@ router.get('/subject/:course_id', (req,res) =>{
     const id = req.params.course_id;
     const courseCode = timeTableData.filter(s => s.catalog_nbr === (id)); //search for the term and return an array with each
     if(courseCode){
-        res.send(courseCode);
+        res.send(courseCode); //return the value of the course code
     }else{
         res.status(404).send(`course code ${id} was not found`);
     }
@@ -61,7 +69,59 @@ router.get('/subject/timetable/:course_id/:subject_id/:component_id?', (req,res)
         res.status(404).send(`was not found`);
     }
 });
-app.use('/courses/classes', router) //install router for courses/classes
+//creating a new schedule
+router.put('/newSchedule' , (req,res) => {
+    db.defaults({ schedule: [] })
+    .write()
+    const schedule = req.body;
+    console.log(req.body);
+    if(db.get("schedule").find({scheduleTitle:schedule.scheduleTitle}).value()){ //the return value will be either true or false  if the title exists
+        res.send(`schedule title already exists`); //display a message that the title already exists
+        return; //exit
+    }
+    try{ //try writing to the db
+    db.get('schedule')
+    .push(req.body)
+    .write()
+    res.send("Successfully wrote to the database");
+    console.log("successfully wrote to database");
+    }catch(error){ //if there was an error with the db
+        console.log("could not write to database");
+    }
+    
+});
+//get the llist of subject code, course code pairs for a schedule
+router.get('/scheduleFinder/:scheduleID', (req,res) =>{
+    const schedule = req.params.scheduleID;
+    if(db.get("schedule").find({scheduleTitle:schedule}).value()){
+        res.send(db.get("schedule").find({scheduleTitle:schedule}).write().pairing); //return the value of the pairing
+    }else{
+        res.send("does not exist");
+    }
+});
+router.delete('/scheduleDelete/:scheduleID', (req,res) =>{
+    const schedule = req.params.scheduleID;
+    if(db.get("schedule").find({scheduleTitle:schedule}).value()){
+        db.get("schedule").remove({scheduleTitle:schedule}).write();
+        res.send("removed from database");
+    }else{
+        res.send("does not exist");
+    }
+});
+router.get('/scheduleSize/size', (req,res) => {
+    var array = [];
+    var database = db.get("schedule").write();
+    for(i = 0; i< database.length ; i++){
+        array.push({scheduleTitle:database[i].scheduleTitle, scheduleSize:database[i].pairing.length})
+    }
+    res.send(array);
+});
+router.delete('/scheduleDeleteAll/all', (req,res) => {
+    db.setState({});
+    db.defaults({ schedule: [] });
+    res.send("database reset");
+});
+app.use('/', router) //install router for courses/classes
 app.listen(port, () =>{
     console.log(`Listening on port ${port}`);
 
