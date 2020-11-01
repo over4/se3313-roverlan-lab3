@@ -70,7 +70,7 @@ router.get('/subject/timetable/:course_id/:subject_id/:component_id?', (req,res)
     }
 });
 //creating a new schedule
-router.put('/newSchedule' , (req,res) => {
+router.put('/newSchedule/create' , (req,res) => {
     db.defaults({ schedule: [] })
     .write()
     const schedule = req.body;

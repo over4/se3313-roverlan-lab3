@@ -6,6 +6,8 @@
 <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
+    <div class = "search">
+        <h1> Search for a Class or Subject</h1>
         <label>Subject:</label>
         <input type="text" id="getsubject" name="subject"><br><br>
         <label>Course Code:</label>
@@ -13,10 +15,22 @@
         <label>Course Component:</label>
         <input type="text" id="getcomp" name="comp"><br><br>
         <br><br><input type="submit" id= "submit" value="Submit">
-      <div>
+    </div>
+    <div class = "timetable">
+        <h1>Add a new time table</h1>
+        <label>Schedule Title:</label>
+        <input type="text" id="addtitle" name="title"><br><br>
+        <label>Subject:</label>
+        <input type="text" id="addsubject" name="subject"><br><br>
+        <label>Course Code:</label>
+        <input type="text" id="addcourseCode" name="code"><br><br>
+        <br><br><input type="submit" id= "SubmitSchedule" value="SubmitSchedule">
+        <br><br><input type="submit" id= "AddClass" value="AddClass">
+    </div>
+    <div>
         <h1></h1>  
         <ol id ="classesDisplay"></ol>
-      </div>
+    </div>
 <script defer src = "script.js"></script>
 </body>
 </html>

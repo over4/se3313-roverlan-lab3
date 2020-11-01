@@ -35,6 +35,28 @@
           "subjectCode": "2341A"
         }
       ]
+    },
+    {
+      "scheduleTitle": "title10",
+      "pairing": [
+        {
+          "courseCode": "AMERICAN",
+          "subjectCode": "3310F"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "titleTest",
+      "pairing": [
+        {
+          "courseCode": "1234",
+          "subject": "AMERICAN"
+        },
+        {
+          "courseCode": "4321",
+          "subject": "AMERICAN"
+        }
+      ]
     }
   ]
 }
