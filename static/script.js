@@ -182,6 +182,5 @@ function searchAll(){
                 l.appendChild(classes);
             })
         }))
-
 }
     
