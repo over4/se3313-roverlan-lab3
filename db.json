@@ -50,11 +50,24 @@
       "pairing": [
         {
           "courseCode": "1234",
-          "subject": "AMERICAN"
+          "subjectCode": "AMERICAN"
         },
         {
           "courseCode": "4321",
-          "subject": "AMERICAN"
+          "subjectCode": "AMERICAN"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "Schedule5",
+      "pairing": [
+        {
+          "courseCode": "1234A",
+          "subjectCode": "AMERICAN"
+        },
+        {
+          "courseCode": "4321B",
+          "subjectCode": "AMERICAN"
         }
       ]
     }

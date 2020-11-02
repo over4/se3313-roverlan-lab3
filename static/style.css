@@ -2,5 +2,17 @@
     float: right;
 }
 .search{
-    float: left;
+    overflow: hidden; /* allowing the split of the list, so that it can work on 2 sides*/
+    float: left; /* float it left so that it can be alligned */
+    width: 45%;
+}
+.searchSchedule{
+    overflow: hidden; /* allowing the split of the list, so that it can work on 2 sides*/
+    float: left; /* float it left so that it can be alligned */
+    width: 45%;
+}
+.display {
+    overflow: hidden; /* allowing the split of the list, so that it can work on 2 sides*/
+    float: left; /* float it left so that it can be alligned */
+    width: 45%;
 }

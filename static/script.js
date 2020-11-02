@@ -6,6 +6,7 @@ var globaljson = {  //initialize the object with some default values
 document.getElementById('submit').addEventListener('click',getinfo)
 document.getElementById('AddClass').addEventListener('click',jsonbuilder);
 document.getElementById('SubmitSchedule').addEventListener('click',submitSchedule);
+document.getElementById('SearchSchedule').addEventListener('click',searchschedule);
 var globalString = `"{\"scheduleTitle\":\"titleEXAMPLE\",\"pairing\":[{}]}"`; //\"courseCode\":\"AMERICAN\",\"subjectCode\":\"2341A\"
 var globalCounter = 0;
 var obj;
@@ -73,7 +74,7 @@ function getinfo(){
             }
             data.forEach(e => {
                 const classes = document.createElement('li');
-                classes.appendChild(document.createTextNode(`${e.catalog_nbr} ${e.subject} ${e.course_info[0].ssr_component}`));
+                classes.appendChild(document.createTextNode(`${e.catalog_nbr} ${e.subject} ${e.course_info[0].ssr_component}`)); //
                 l.appendChild(classes);
             })
         }))
@@ -89,7 +90,7 @@ function jsonbuilder(){ // build the schedule json that will later be send
         flag = false;
     }
         globaljson.scheduleTitle = document.getElementById('addtitle').value;
-        globaljson.pairing.push({"courseCode" :  document.getElementById('addcourseCode').value , "subject" : document.getElementById('addsubject').value});
+        globaljson.pairing.push({"courseCode" :  document.getElementById('addcourseCode').value , "subjectCode" : document.getElementById('addsubject').value});
         console.log(globaljson);
 }
 function submitSchedule(){
@@ -108,4 +109,23 @@ function submitSchedule(){
     })
     .catch()
     flag = true
+}
+function searchschedule(){
+        var titleString = "/scheduleFinder/";
+        titleString += document.getElementById("searchtitle").value;
+        console.log(titleString);
+        fetch(titleString)
+        .then(res => res.json()
+        .then(data => {
+            console.log(data);
+            const l = document.getElementById('classesDisplay');
+            while(l.firstChild){
+                l.removeChild(l.firstChild);
+            }
+            data.forEach(e => {
+                const classes = document.createElement('li');
+                classes.appendChild(document.createTextNode(`${e.courseCode} ${e.subjectCode}`)); //
+                l.appendChild(classes);
+            })
+        }))
 }
