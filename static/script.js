@@ -1,4 +1,4 @@
-const sanitizer = require('express-auto-sanitize')
+
 var globaljson = {  //initialize the object with some default values
     scheduleTitle: "title",
     pairing: [
@@ -15,13 +15,7 @@ var globalString = `"{\"scheduleTitle\":\"titleEXAMPLE\",\"pairing\":[{}]}"`; //
 var globalCounter = 0;
 var obj;
 var flag;
-const options = {
-    query: Boolean,
-    body: Boolean,
-    cookies: Boolean,
-    original: Boolean, // will keep the original version in req.original
-    sanitizerFunction: Function // use your personnal sanitizing algorithm
-}
+
 app.use(sanitizer(options));
 function getinfo(){
     if(document.getElementById('getcomp').value == "" && document.getElementById('getcourseCode').value == "" && document.getElementById('getsubject').value != ""){ //checking what boxes the user has left blank

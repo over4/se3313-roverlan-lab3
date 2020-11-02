@@ -1,5 +1,6 @@
 const { time } = require('console');
 const express = require('express');
+const sanitizer = require('express-auto-sanitize')
 const app = express();
 const port =3000;
 const router = express.Router();
@@ -22,6 +23,13 @@ app.use((req,res ,next) =>{
     console.log(`${req.method} request for ${req.url}`);
     next(); //go to the next function
 });
+const options = {
+    query: Boolean,
+    body: Boolean,
+    cookies: Boolean,
+    original: Boolean, // will keep the original version in req.original
+    sanitizerFunction: Function // use your personnal sanitizing algorithm
+}
 app.get('/',(req,res) =>{
     res.sendFile("./index.html")
 });
