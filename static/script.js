@@ -59,6 +59,13 @@ function getinfo(){
             }
             data.forEach(e => {
                 const classes = document.createElement('li');
+                if(e.course_info[0].ssr_component == "LEC"){
+                    classes.style.color = "#ff0000"; //red text for LEC
+                    }else if(e.course_info[0].ssr_component == "TUT"){
+                        classes.style.color = "#008000"; //green text for tut
+                    }else if(e.course_info[0].ssr_component == "LAB"){
+                        classes.style.color = "#ff00ff"; //pink text for a lab
+                    }
                 classes.appendChild(document.createTextNode(`${e.catalog_nbr} ${e.subject} ${e.course_info[0].ssr_component}`));//same idea as above
                 l.appendChild(classes);
             })
@@ -80,6 +87,13 @@ function getinfo(){
             }
             data.forEach(e => {
                 const classes = document.createElement('li');
+                if(e.course_info[0].ssr_component == "LEC"){
+                    classes.style.color = "#ff0000"; //red text for LEC
+                    }else if(e.course_info[0].ssr_component == "TUT"){
+                        classes.style.color = "#008000"; //green text for tut
+                    }else if(e.course_info[0].ssr_component == "LAB"){
+                        classes.style.color = "#ff00ff"; //pink text for a lab
+                    }
                 classes.appendChild(document.createTextNode(`${e.catalog_nbr} ${e.subject} ${e.course_info[0].ssr_component}`)); ////same idea as above
                 l.appendChild(classes);
             })
