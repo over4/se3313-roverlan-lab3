@@ -21,6 +21,9 @@
     position:absolute;
     bottom:0;
     right:40%;
+    border-style: solid;
+    border-color: darkred;
+    border-width: 1px;
 }
 .searchAllSchedules{
     float: left;

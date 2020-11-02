@@ -51,6 +51,50 @@
           "subjectCode": "AMERICAN"
         }
       ]
+    },
+    {
+      "scheduleTitle": "Monday",
+      "pairing": [
+        {
+          "courseCode": "1234a",
+          "subjectCode": "AMERICAN"
+        },
+        {
+          "courseCode": "5432A",
+          "subjectCode": "SCIENCE"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "标题",
+      "pairing": [
+        {
+          "courseCode": "1234",
+          "subjectCode": "AMERICAN"
+        },
+        {
+          "courseCode": "987654321",
+          "subjectCode": "AMERICAN"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "test54",
+      "pairing": [
+        {
+          "courseCode": "1234",
+          "subjectCode": "AMERICAN"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "title90",
+      "pairing": [
+        {
+          "courseCode": "123",
+          "subjectCode": "AMERICAN"
+        }
+      ]
     }
   ]
 }

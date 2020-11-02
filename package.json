@@ -1,0 +1,9 @@
+{
+    "name": "application-name",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-autosanitizer": "^1.0.1",
+        "lowdb": "^1.0.0"
+    }
+}

@@ -1,6 +1,6 @@
 const { time } = require('console');
 const express = require('express');
-const sanitizer = require('express-auto-sanitize')
+const expressSanitizer = require('express-autosanitizer');
 const app = express();
 const port =3000;
 const router = express.Router();
@@ -16,6 +16,7 @@ var data=fs.readFileSync('Lab3-timetable-data.json', 'utf8');
 var timeTableData=JSON.parse(data);
 //set up express JSON
 router.use(express.json());
+router.use(expressSanitizer.all);
 //setep serving front end code
 app.use('/', express.static('static'));
 //middleware to do logging
@@ -23,13 +24,6 @@ app.use((req,res ,next) =>{
     console.log(`${req.method} request for ${req.url}`);
     next(); //go to the next function
 });
-const options = {
-    query: Boolean,
-    body: Boolean,
-    cookies: Boolean,
-    original: Boolean, // will keep the original version in req.original
-    sanitizerFunction: Function // use your personnal sanitizing algorithm
-}
 app.get('/',(req,res) =>{
     res.sendFile("./index.html")
 });

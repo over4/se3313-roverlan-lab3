@@ -27,10 +27,17 @@ function getinfo(){
         .then(data => {
             const l = document.getElementById('classesDisplay');
             while(l.firstChild){
-                l.removeChild(l.firstChild); //clears the list so new objects can be made for it
+            l.removeChild(l.firstChild); //clears the list so new objects can be made for it
             }
             data.forEach(e => {
                 const classes = document.createElement('li'); //create a li
+                if(e.course_info[0].ssr_component == "LEC"){
+                classes.style.color = "#ff0000"; //red text for LEC
+                }else if(e.course_info[0].ssr_component == "TUT"){
+                    classes.style.color = "#008000"; //green text for tut
+                }else if(e.course_info[0].ssr_component == "LAB"){
+                    classes.style.color = "#ff00ff"; //pink text for a lab
+                }
                 classes.appendChild(document.createTextNode(`${e.catalog_nbr} ${e.subject} ${e.course_info[0].ssr_component}`)); //create the text node for the new data
                 l.appendChild(classes);
             })
@@ -46,7 +53,6 @@ function getinfo(){
         fetch(subjectString)//same idea as above
         .then(res => res.json()
         .then(data => {
-            console.log(data);
             const l = document.getElementById('classesDisplay');
             while(l.firstChild){
                 l.removeChild(l.firstChild);
@@ -65,11 +71,9 @@ function getinfo(){
         subjectString += document.getElementById("getcourseCode").value;
         subjectString += "/" + document.getElementById('getsubject').value;
         subjectString += "/" + document.getElementById('getcomp').value;
-        console.log(subjectString);
         fetch(subjectString)//same idea as above
         .then(res => res.json()
         .then(data => {
-            console.log(data);
             const l = document.getElementById('classesDisplay');
             while(l.firstChild){
                 l.removeChild(l.firstChild);
@@ -93,6 +97,7 @@ function jsonbuilder(){ // build the schedule json that will later be send
     }
         globaljson.scheduleTitle = document.getElementById('addtitle').value;
         globaljson.pairing.push({"courseCode" :  document.getElementById('addcourseCode').value , "subjectCode" : document.getElementById('addsubject').value}); //push the class into the object
+        document.getElementById("labeladdclass").innerText = "added class to schedule";
 }
 function submitSchedule(){
     //send the json that was created by adding a bunch of pairings
@@ -103,18 +108,22 @@ function submitSchedule(){
     })
     .then(res => {
         if (res.ok){
-            console.log("success")
+            console.log(res)
         }else{
             console.log('Error: ', res.status);
         }
     })
     .catch()
     flag = true
+    document.getElementById("labeladdclass").innerText = "submitted schedule"; //send a message to the user
+    setTimeout(clearmessage , 3000); //erase the message after 3 seconds
+}
+function clearmessage(){
+    document.getElementById("labeladdclass").innerText = "";
 }
 function searchschedule(){
         var titleString = "/scheduleFinder/";
         titleString += document.getElementById("searchtitle").value;
-        console.log(titleString);
         fetch(titleString)
         .then(res => res.json()
         .then(data => {
@@ -139,7 +148,6 @@ function cleardb(){
 function clearSingle(){
     var fetchString = "/scheduleDelete/"
     fetchString += document.getElementById("scheduleTitle").value;
-    console.log(fetchString)
     fetch(fetchString)
     .then(
         console.log("success")
@@ -150,14 +158,13 @@ function searchAll(){
     fetch("/scheduleSize/size")
     .then(res => res.json()
         .then(data => {
-            console.log(data);
             const l = document.getElementById('classesDisplay');
             while(l.firstChild){
                 l.removeChild(l.firstChild);
             }
             data.forEach(e => {
                 const classes = document.createElement('li');
-                classes.appendChild(document.createTextNode(`${JSON.stringify(e)}`));
+                classes.appendChild(document.createTextNode("Title: " + `${e.scheduleTitle}` + " | Number of classes: " + `${e.scheduleSize}`));
                 l.appendChild(classes);
             })
         }))
