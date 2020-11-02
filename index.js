@@ -8,9 +8,6 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('db.json')
 const db = low(adapter)
-
-
-
 //read file
 var fs=require('fs');
 var data=fs.readFileSync('Lab3-timetable-data.json', 'utf8');
@@ -99,7 +96,7 @@ router.get('/scheduleFinder/:scheduleID', (req,res) =>{
         res.send("does not exist");
     }
 });
-router.delete('/scheduleDelete/:scheduleID', (req,res) =>{
+router.get('/scheduleDelete/:scheduleID', (req,res) =>{
     const schedule = req.params.scheduleID;
     if(db.get("schedule").find({scheduleTitle:schedule}).value()){
         db.get("schedule").remove({scheduleTitle:schedule}).write();
@@ -116,7 +113,7 @@ router.get('/scheduleSize/size', (req,res) => {
     }
     res.send(array);
 });
-router.delete('/scheduleDeleteAll/all', (req,res) => {
+router.get('/scheduleDeleteAll/all', (req,res) => {
     db.setState({});
     db.defaults({ schedule: [] });
     res.send("database reset");

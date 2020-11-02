@@ -1,51 +1,6 @@
 {
   "schedule": [
     {
-      "scheduleTitle": "title1",
-      "pairing": [
-        {
-          "courseCode": "AMERICAN",
-          "subjectCode": "2341A"
-        }
-      ]
-    },
-    {
-      "scheduleTitle": "title2",
-      "pairing": [
-        {
-          "courseCode": "AMERICAN",
-          "subjectCode": "2341A"
-        }
-      ]
-    },
-    {
-      "scheduleTitle": "title3",
-      "pairing": [
-        {
-          "courseCode": "AMERICAN",
-          "subjectCode": "2341A"
-        }
-      ]
-    },
-    {
-      "scheduleTitle": "title4",
-      "pairing": [
-        {
-          "courseCode": "AMERICAN",
-          "subjectCode": "2341A"
-        }
-      ]
-    },
-    {
-      "scheduleTitle": "title10",
-      "pairing": [
-        {
-          "courseCode": "AMERICAN",
-          "subjectCode": "3310F"
-        }
-      ]
-    },
-    {
       "scheduleTitle": "titleTest",
       "pairing": [
         {
@@ -67,6 +22,32 @@
         },
         {
           "courseCode": "4321B",
+          "subjectCode": "AMERICAN"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "test1",
+      "pairing": [
+        {
+          "courseCode": "1234",
+          "subjectCode": "AMERICAN"
+        },
+        {
+          "courseCode": "123412345",
+          "subjectCode": "AMERICAN"
+        }
+      ]
+    },
+    {
+      "scheduleTitle": "title1",
+      "pairing": [
+        {
+          "courseCode": "1234",
+          "subjectCode": "AMERICAN"
+        },
+        {
+          "courseCode": "4312",
           "subjectCode": "AMERICAN"
         }
       ]

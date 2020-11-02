@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class = "search">
-        <h1> Search for a Class or Subject</h1>
+        <h1> Search for a Class or Subject</h1> <!--search for classes -->
         <label>Subject:</label>
         <input type="text" id="getsubject" name="subject"><br><br>
         <label>Course Code:</label>
@@ -17,7 +17,7 @@
         <br><br><input type="submit" id= "submit" value="Submit">
     </div>
     <div class = "timetable">
-        <h1>Add a new time table</h1>
+        <h1>Add a new time table</h1> <!--build a new timetable -->
         <label>Schedule Title:</label>
         <input type="text" id="addtitle" name="title"><br><br>
         <label>Subject:</label>
@@ -26,16 +26,31 @@
         <input type="text" id="addcourseCode" name="code"><br><br>
         <br><br><input type="submit" id= "SubmitSchedule" value="SubmitSchedule">
         <br><br><input type="submit" id= "AddClass" value="AddClass">
+        <br><br>
     </div>
     <div class = "searchSchedule">
-        <h1>Search for existing Schedule</h1>
+        <h1>Search for existing Schedule</h1> <!--search for a schedule based on a title -->
         <label>Search Schedule Title:</label>
         <input type="text" id="searchtitle" name="title"><br><br>
         <br><br><input type="submit" id= "SearchSchedule" value="Search">
     </div>
+    <div class = "searchAllSchedules">
+        <h1>Show ALL Schedules</h1> <!-- show all the schedules and how many classes each has-->
+        <br><br><input type="submit" id= "SearchAllSchedules" value="Search">
+    </div>
+    <div class = "clearOneSchedule"> <!-- for clearing only one schedule-->
+        <br><br> <h1>Clear single schedule</h1>
+        <label>Title:</label>
+        <input type="text" id="scheduleTitle" name="code"><br><br>  
+        <input type="submit" id= "clearSingleSchedule" value="Clear">
+    </div>
+    <div class = "clearSchedules"> <!--for clearing all schedules-->
+        <h1>Clear database</h1>  
+        <input type="submit" id= "cleardb" value="Clear">
+    </div>
     <div class = "display">
-        <h1></h1>  
-        <ol id ="classesDisplay"></ol>
+        <h1> Search Results</h1>  
+        <ol id ="classesDisplay"></ol> <!--this is where the dom objects will be placed-->
     </div>
 <script defer src = "script.js"></script>
 </body>

@@ -1,18 +1,45 @@
 .timetable{
     float: right;
+    margin-bottom: 2%;
 }
 .search{
-    overflow: hidden; /* allowing the split of the list, so that it can work on 2 sides*/
-    float: left; /* float it left so that it can be alligned */
+    float: left; 
     width: 45%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 .searchSchedule{
-    overflow: hidden; /* allowing the split of the list, so that it can work on 2 sides*/
-    float: left; /* float it left so that it can be alligned */
+    
+    float: left; 
     width: 45%;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 .display {
-    overflow: hidden; /* allowing the split of the list, so that it can work on 2 sides*/
-    float: left; /* float it left so that it can be alligned */
-    width: 45%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    position:absolute;
+    bottom:0;
+    right:40%;
+}
+.searchAllSchedules{
+    float: left;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+.clearOneSchedule{
+    float: right;
+    position:absolute;
+    bottom:30%;
+    right:0;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+.clearSchedules{
+    position:absolute;
+    bottom:0;
+    right:0;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
